@@ -24,7 +24,8 @@ body {
   pointer-events: none;
 }
 
-#map svg circle {
+#map svg circle,
+.legend > div {
   --color-departures: steelblue;
   --color-arrivals: darkorange;
   --color: color-mix(
@@ -32,6 +33,9 @@ body {
     var(--color-departures) calc(100% * var(--departure-ratio, 0.5)),
     var(--color-arrivals)
   );
+}
+
+#map svg circle {
   fill: var(--color);
   fill-opacity: 0.6;
   stroke: white;
@@ -63,4 +67,35 @@ header em {
 header em {
   color: #888;
   font-style: italic;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  margin-block: 1em;
+  width: 100%;
+  font-size: 0.9em;
+}
+
+.legend-label {
+  color: #888;
+  font-size: 0.85em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.legend > div {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.legend > div::before {
+  content: '';
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  background: var(--color);
 }
